@@ -19,6 +19,7 @@ aws iam create-policy \
     --policy-name AWSLoadBalancerControllerIAMPolicy \
     --policy-document file://iam_policy.json 1> /dev/null
 
+sleep 1
 
 eksctl create iamserviceaccount \
   --cluster=eks-worker \
