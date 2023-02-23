@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ip-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ipnginx
+  template:
+    metadata:
+      labels:
+        app: ipnginx
+    spec:
+      containers:
+        - name: ipnginx
+          image: oolralra/ipnginx
+

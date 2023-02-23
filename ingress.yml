@@ -1,0 +1,41 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: zigiingress
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: instance
+    alb.ingress.kubernetes.io/subnets: subnet-0d34661895bb7cee9,subnet-0f06bcc38c6a8e491
+spec:
+  rules:
+    - http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: mario
+                port:
+                  number: 80
+          - pathType: Prefix
+            path: /ip
+            backend:
+              service:
+                name: ip-svc
+                port:
+                  number: 80
+          - pathType: Prefix
+            path: /sb
+            backend:
+              service:
+                name: sb-svc
+                port:
+                  number: 80
+          - pathType: Prefix
+            path: /h
+            backend:
+              service:
+                name: h-svc
+                port:
+                  number: 80
