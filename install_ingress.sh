@@ -7,7 +7,7 @@ ACCOUNT_ID=380962557106
 #your aws account ID, You can check on AWS 'IAM'
 
 VPC_ID=vpc-0fdcfa9ae5dc1bfa1
-#VPC ID
+#your VPC ID
 
 EKS_REGION=ap-northeast-2
 #Region with EKS installed
@@ -22,7 +22,7 @@ aws iam create-policy \
 sleep 1
 
 eksctl create iamserviceaccount \
-  --cluster=eks-worker \
+  --cluster=${CLUSTER_NAME} \
   --namespace=kube-system \
   --name=aws-load-balancer-controller \
   --role-name AmazonEKSLoadBalancerControllerRole \
