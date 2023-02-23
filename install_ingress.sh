@@ -17,7 +17,8 @@ curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-lo
 
 aws iam create-policy \
     --policy-name AWSLoadBalancerControllerIAMPolicy \
-    --policy-document file://iam_policy.json
+    --policy-document file://iam_policy.json 1> /dev/null
+
 
 eksctl create iamserviceaccount \
   --cluster=eks-worker \
@@ -27,6 +28,7 @@ eksctl create iamserviceaccount \
   --attach-policy-arn=arn:aws:iam::${ACCOUNT_ID}:policy/AWSLoadBalancerControllerIAMPolicy \
   --override-existing-serviceaccounts \
   --approve
+
 
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 > get_helm.sh
 echo 'DOWNLOAD helm_scrpits'
