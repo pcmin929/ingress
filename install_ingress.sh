@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CLUSTER_NAME=eks-worker
+CLUSTER_NAME=eks-cluster
 #your eks cluster name
 
 ACCOUNT_ID=380962557106
